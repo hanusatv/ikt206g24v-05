@@ -1,0 +1,4 @@
+# Listens to port 80, and reverse proxy to the "example" service on port 8080
+:80 {
+    reverse_proxy example:8080
+}
