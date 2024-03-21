@@ -1,0 +1,46 @@
+version: "3.8"
+
+networks:
+  aspnet:
+    external: false
+
+services:
+  example:
+    build: ./example
+    container_name: example
+    environment:
+      - ASPNETCORE_ENVIRONMENT=production
+    restart: always
+    networks:
+      - aspnet
+    volumes:
+      - ./example:/app
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    networks:
+      - aspnet
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    restart: always
+    networks:
+      - aspnet
+    ports:
+      - "80:80"
+    volumes:
+      - ./Data/Caddyfile:/etc/caddy/Caddyfile
+    depends_on:
+      - example
