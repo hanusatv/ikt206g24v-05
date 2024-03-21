@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Author>
+
+@{
+  ViewBag.Title = "title";
+  Layout = "_Layout";
+}
+
+<h2>Authors</h2>
+
+<ul>
+
+  @foreach (var author in Model)
+  {
+    <li>
+      @author.FirstName @author.LastName |
+      <a asp-controller="Authors" asp-action="Edit" asp-route-id="@author.Id">Edit</a> |
+      <a asp-controller="Authors" asp-action="Delete" asp-route-id="@author.Id">Delete</a>
+    </li>
+  }
+
+</ul>
+
+<p><a asp-controller="Authors" asp-action="Add">Add new Author</a></p>

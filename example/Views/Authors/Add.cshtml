@@ -1,0 +1,36 @@
+﻿@model Author
+
+@{
+  ViewBag.Title = "title";
+  Layout = "_Layout";
+}
+
+<h2>Add / edit author</h2>
+
+<form method="post">
+  <div class="row mb-3">
+    <label asp-for="FirstName" class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-3">
+      <input asp-for="FirstName" class="form-control">
+      <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label asp-for="LastName" class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-3">
+      <input asp-for="LastName" class="form-control">
+      <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+  </div>
+  
+  <div class="row mb-3">
+    <label asp-for="Birthdate" class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-3">
+      <input asp-for="Birthdate" class="form-control">
+      <span asp-validation-for="Birthdate" class="text-danger"></span>
+    </div>
+  </div>
+  
+  <input type="submit" class="btn btn-primary" value="Save">
+  </form>
