@@ -1,0 +1,22 @@
+# This is a generated file. Not intended for manual editing.
+version: "3.8"
+services:
+  example:
+    build:
+      context: "/home/hanusatv/ikt206g24v-05/example"
+      dockerfile: "Dockerfile"
+      target: "build-env"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app-1/bin/Debug/net8.0/Example.dll"
+    environment:
+      ASPNETCORE_STATICWEBASSETS: "/app-1/bin/Debug/net8.0/Example.staticwebassets.runtime.CT.json"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "example:dev"
+    ports: []
+    volumes:
+    - "/home/hanusatv/.nuget/packages:/root/.nuget/packages"
+    - "/home/hanusatv/ikt206g24v-05/example:/app-1:rw"
+    - "/home/hanusatv/ikt206g24v-05:/src:rw"
+    working_dir: "/app-1"
